@@ -1,3 +1,4 @@
+name: nan1casa
 resolver: lts-16.31
 packages:
 - .
