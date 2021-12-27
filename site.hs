@@ -11,21 +11,21 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*" $ do
+    match "design/css/*" $ do
         route   idRoute
         compile compressCssCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "design/templates/default.html" defaultContext
             >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "design/templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "design/templates/default.html" postCtx
             >>= relativizeUrls
 
     create ["archive.html"] $ do
@@ -38,8 +38,8 @@ main = hakyll $ do
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= loadAndApplyTemplate "design/templates/archive.html" archiveCtx
+                >>= loadAndApplyTemplate "design/templates/default.html" archiveCtx
                 >>= relativizeUrls
 
 
@@ -53,10 +53,10 @@ main = hakyll $ do
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "design/templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match "templates/*" $ compile templateBodyCompiler
+    match "design/templates/*" $ compile templateBodyCompiler
 
 
 --------------------------------------------------------------------------------
