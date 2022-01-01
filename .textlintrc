@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "preset-ja-technical-writing": {
+      "max-kanji-continuous-len": {
+         allow: ["秋葉原最終処分場"]
+      }
+    },
+    "prh": {
+      "rulePaths" : [
+        "./prh-rules/media/techbooster.yml",
+        "./prh-rules/media/techbooster.yml"
+      ]
+    }
+  }
+}
